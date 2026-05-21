@@ -2,7 +2,7 @@ Control Plane
 Master
   Gerenciar o cluster
   CM (Controller Manager) --> Manter e atualizar o estado desejado
-  API --> Receber e executar novos comandos, pois ela é um API Rest
+  API --> Receber e executar novos comandos, pois ela é um API Rest responsavel por toda a comunicação entre os componentes
   SCHED (Scheduler) --> Determinar onde um pod vai ser executado em nosso cluster
   ETCD --> Responsavel por armazenar todos os dados vitais do nosso cluster através de um banco de dados chave/valor
 
