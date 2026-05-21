@@ -1,0 +1,13 @@
+Control Plane
+Master
+  Gerenciar o cluster
+  CM (Controller Manager) --> Manter e atualizar o estado desejado
+  API --> Receber e executar novos comandos, pois ela é um API Rest
+  SCHED (Scheduler) --> Determinar onde um pod vai ser executado em nosso cluster
+  ETCD --> Responsavel por armazenar todos os dados vitais do nosso cluster através de um banco de dados chave/valor
+
+Nodes
+node
+  Executar as aplicações
+  KUBELET --> Responsavel pela execução dos podes dentro do cluster
+  K-PROXY --> Resposavel pela comunicação de nossos nodes dentro do cluster
