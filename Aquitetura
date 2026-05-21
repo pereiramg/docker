@@ -12,10 +12,20 @@ node
   KUBELET --> Responsavel pela execução dos podes dentro do cluster
   K-PROXY --> Resposavel pela comunicação de nossos nodes dentro do cluster
 
+=================================================================================
+Os namespaces gera o isolamento de grupos de processos em seu nível lógico
 Namespaces
-  PID: provê isolamento dos processos rodando dentro do contêiner;
-  NET: provê isolamento das interfaces de rede;
-  IPC: provê isolamento da comunicação entre processos e memória compartilhada;
-  MNT: provê isolamento do sistema de arquivos/pontos de montagem;
-  UTS: provê isolamento do kernel. Age como se o contêiner fosse outro host.
+  PID (Process Identifier Namespace): isolamento de processos que estão em execução dentro do container.
+  NET (Network Namespace): isolamento dos recursos de rede, como interfaces de rede, endereços IP e tabelas de roteamento.
+  IPC (Inter-Process Communication Namespace): isolamento dos mecanismos de comunicação entre processos, como filas de mensagens e memória compartilhada.
+  MNT (Mount Namespace): isolamento do sistema de arquivos e pontos de montagem, garantindo que alterações no sistema de arquivos dentro de um container não afetem o sistema de arquivos fora dele.
+  UTS (Unix Timesharing System Namespace): isolamento do kernel, permitindo que o container atue como se fosse outro host.
+
+Por sua vez, o gerenciamento dos recursos físicos compartilhados entre os processos fica sob responsabilidade de um recurso conhecido 
+como Cgroups (grupos de controle). Os Cgroups permitem que o Docker aloque recursos como tempo da CPU, memória do sistema, largura 
+de banda de rede ou combinações destes.
+
+=================================================================================
+
+
 
