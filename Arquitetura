@@ -1,3 +1,4 @@
+=================================================================================
 Control Plane
 Master
   Gerenciar o cluster
@@ -12,7 +13,7 @@ node
   KUBELET --> Responsavel pela execução dos podes dentro do cluster
   K-PROXY --> Resposavel pela comunicação de nossos nodes dentro do cluster
 
-=================================================================================
+==================================== Namespaces =============================================
 Os namespaces gera o isolamento de grupos de processos em seu nível lógico
 Namespaces
   PID (Process Identifier Namespace): isolamento de processos que estão em execução dentro do container.
@@ -25,7 +26,20 @@ Por sua vez, o gerenciamento dos recursos físicos compartilhados entre os proce
 como Cgroups (grupos de controle). Os Cgroups permitem que o Docker aloque recursos como tempo da CPU, memória do sistema, largura 
 de banda de rede ou combinações destes.
 
-=================================================================================
+===================================== Imagem ============================================
 
+Podemos pensar em uma imagem como um arquivo executável independente, que contém todas as dependências e arquivos 
+necessários para o contêiner ser executado como um processo isolado em nossa máquina
+As imagens podem ser baixadas de um repositório (cujo nome é registry) ou criadas localmente e compiladas
 
+Para criar uma imagem, podemos usar um arquivo de definição chamado de Dockerfile, no qual utilizamos algumas 
+diretivas para declarar o que teremos em nossa imagem.
+
+=================================== Docker Hub ==============================================
+Repositório Central de Imagens
+Docker Hub funciona como um serviço para registrar, armazenar e compartilhar imagens no ambiente Docker
+https://hub.docker.com/
+
+=================================== Metadados ==============================================
+Cada container possui seu diretório interno associado ao ID, dentro de: /var/lib/docker/
 
