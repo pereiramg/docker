@@ -1,0 +1,32 @@
+Node Package Manager - NPM
+
+Ele é usado para:
+  instalar bibliotecas
+  gerenciar dependências
+  automatizar scripts
+  distribuir aplicações JavaScript/TypeScript
+
+============== Estrutura básica ==============
+Quando você cria um projeto npm:
+  npm init
+é gerado:
+  package.json
+
+Exemplo:
+  {
+    "name": "meu-projeto",
+    "version": "1.0.0",
+    "dependencies": {
+      "express": "^5.0.0"
+    }
+  }
+
+================= Principais comandos npm ==============
+npm init --> Inicializar projeto
+npm install express --> Instalar pacote
+npm install -g typescript --> Instalar globalmente
+npm uninstall express --> Remover pacote
+npm update --> Atualizar dependências
+npm install --> Instalar dependências do projeto (Lê o package.json)
+npm run build --> Executar scripts
+
