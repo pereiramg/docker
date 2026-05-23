@@ -1,22 +1,42 @@
 
+docker build -t lucasrm/allbooks:1.1 .
 
+docker container --> Ele faz parte da sintaxe mais moderna do Docker. Exemplo:
+    Sintaxe antiga	    Sintaxe moderna
+    docker ps	          docker container ls
+    docker rm	          docker container rm
+    docker stop	        docker container stop
+    docker inspect	    docker container inspect
+  
 docker exec -it [CONTAINER ID] /bin/bash --> Entrar no container
 
-docker inspect [CONTAINER ID] --> 
+docker history --> mostra o histórico de camadas (layers) de uma imagem Docker --- docker history [ID IMAGE]
+
+docker images --> Listar as imagens locais
+
+docker inspect [ID...] --> Exibir informações detalhadas de objetos do Docker em formato JSON.
+  Pode analisar containers / imagens / volumes / redes / serviços
 
 docker logs [CONTAINER ID] --> Ver logs
-  
+
+docker pause [CONTAINER ID] --> Ele irá pausar o meu container
+docker unpause [CONTAINER ID] --> Ele irá despausar o meu container
+
 docker pull [imagem] --> Ele faz apenas o download dessa imagem
 
 docker ps --> Exibe os contêineres em execução
+  -a --> mostra containers ativos / parados / encerrados / com erro / criados mas nunca iniciados --- docker ps -a
+  -q --> Mostra apenas os IDs dos containers. --- docker ps -q
 
-docker ps -a --> mostra containers ativos / parados / encerrados / com erro / criados mas nunca iniciados
+docker rm [CONTAINER ID] --> Remove um container
+  --force --> Força a remoção do container
 
 docker run [OPÇÕES] [contêiner] [COMANDO] --> Executa um contêiner
   --help --> Ver todas as opções disponíveis --- docker run --help
   -d --> detached, roda em segundo plano --- docker run -d nginx
   --name --> Definir nome do container --- docker run --name web01 nginx
   -p 8080:80 --> Mapear portas (Formato: PORTA_HOST:PORTA_CONTAINER) --- docker run -p 8080:80 nginx
+  -P --> publicar automaticamente todas as portas expostas pelo container em portas aleatórias do host. --- docker run -d -P docker/example-voting-app-vote
   -it --> Executar terminal interativo --- docker run -it ubuntu /bin/bash
       -i --> interativo
       -t --> terminal TTY
@@ -39,13 +59,12 @@ docker run [OPÇÕES] [contêiner] [COMANDO] --> Executa um contêiner
     docker run -d --name nginx01 -p 80:80 nginx --> Subir um NGINX web
     docker run -it ubuntu /bin/bash --> Abrir shell Ubuntu
     docker run -d --name mysql01 -e MYSQL_ROOT_PASSWORD=Senha123 -p 3306:3306 mysql:8Banco MySQL --> Banco MySQL
-    
-  
+
 docker start [CONTAINER ID] --> Iniciar container
 
 docker stop [CONTAINER ID] --> Parar container
-
-
+  -t=0 --> parar de imediato meu container
+  $(docker container ls -q) --> 
 
 
 
