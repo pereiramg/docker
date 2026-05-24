@@ -56,7 +56,7 @@ docker run [OPÇÕES] [contêiner] [COMANDO] --> Executa um contêiner
   --rm --> Remover automaticamente ao sair (Container é apagado ao finalizar.) --- docker run --rm ubuntu
   -v --> Montar volume/diretório (Formato: HOST:CONTAINER) --- docker run -v /dados:/app nginx
   -e --> Definir variável de ambiente --- docker run -e MYSQL_ROOT_PASSWORD=senha mysql
-  --network minha_rede --> Conectar em rede específica --- docker run --network minha_rede nginx
+  --network [minha_rede] --> Conectar em rede específica --- docker run --network minha_rede nginx
   -m 512m --> Limitar memória --- docker run -m 512m nginx
   --cpus="1.5" --> Limitar CPU --- docker run --cpus="1.5" nginx
   --restart always --> Reinício automático --- docker run --restart always nginx
@@ -83,8 +83,11 @@ docker tag --> Usado para criar uma nova tag (apelido/referência) para uma imag
     docker tag nginx meu-nginx:v1 --> Exemplo simples
     docker tag app:v1 registry.empresa.com/dev/app:v1 --> Exemplo com registry privado
 
-
-
-
+docker volume --> Usado para gerenciar volumes Docker
+    ls --> lista volumes --- docker volume ls
+    create --> cria volume --- docker volume create meus_dados
+    inspect --> detalhes do volume --- docker volume inspect meus_dados
+    rm --> remove volume --- docker volume rm meus_dados
+    prune --> remove volumes não usados --- docker volume prune
 
 
