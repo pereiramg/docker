@@ -1,0 +1,44 @@
+================= Conceito de bind mount ====================
+  O container acessa diretamente um diretório do Linux host.
+
+docker run
+
+  --mount --> Usado para montar volumes/sistemas de arquivos.
+  type=bind --> Indica um bind mount, Ou seja: um diretório real do host, será montado dentro do container
+  source=/home/galdper/volume-docker --> Diretório no HOST Linux, Esse diretório será compartilhado.
+  target=/app --> Local dentro do container onde o diretório será montado.
+
+Exemplo:
+  docker run -it --mount type=bind,source=/home/alura/volume-docker,target=/app ubuntu bash
+
+==================== volumes ====================
+Para ambientes de produção, o Docker recomenda oficialmente que utilizemos o mecanismo dos volumes na persistência de dados.
+Dentre as principais vantagens que os volumes apresentam em relação aos bind mounts, podemos destacar:
+  Facilidade de backup e migração.
+  As ações de gerenciamento deles podem utilizar comandos da CLI do Docker.
+  Compartilhamento seguro entre vários containers.
+  Drivers de volume permitem armazenar volumes em hosts remotos ou provedores de nuvem, criptografar o conteúdo dos volumes ou adicionar outras funcionalidades.
+  Novos volumes podem ter seu conteúdo previamente preenchido por um container.
+  Não aumentam o tamanho dos containers que o utilizam.
+  Existência dissociada do ciclo de vida de um container específico.
+
+
+  docker volume create novo-volume --> Criação do volume
+
+  docker run -it --mount source=novo-volume,target=/app ubuntu bash
+
+
+==================== TMPFS ====================
+O TMPFS é altamente recomendado para ser utilizado no ambiente Linux, de forma preferencial.
+
+Caso o container gere dados de estado não-persistente (informações temporárias que não precisam ser armazenadas por longo tempo), 
+é recomendável a utilização de um ponto de montagem tmpfs para evitar armazenar tais dados de forma permanente e obter um 
+melhor desempenho do container.
+
+Esse mecanismo é utilizado quando estamos lidando com dados sensíveis: senhas de usuários e dados pessoais. Assim, 
+ele é útil para que não passemos esses dados de um container para o outro.
+
+A ideia do tmpfs é armazenar os dados de forma temporária, para proteger esses dados de acessos externos.
+
+docker run -it --tmpfs=/app ubuntu bash
+
