@@ -1,0 +1,84 @@
+# É um arquivo YAML --> docker-compose.yml
+# Exemplo básico:
+# =============================================
+version: '3'
+
+services:
+  web:
+    image: nginx
+    ports:
+      - "80:80"
+
+# ==================== Definição ==========================
+# É usado para definir e executar aplicações com múltiplos containers no Docker usando o Docker Compose.
+# Ele permite subir vários serviços com um único comando.
+
+# ==================== Explicando cada parte ====================
+# version
+#   version: '3' --> Versão do schema Compose.
+# services
+#   services: --> Define os containers/serviços da aplicação.
+# web
+#   web: --> Nome lógico do serviço/container.
+# image
+#   image: nginx --> Imagem Docker usada.
+# ports
+#   ports:
+#   - "80:80"
+#   Mapeamento: host → 80:container → 80
+
+# ==================== Como executar ====================
+#   docker compose up --> No diretório do arquivo para executar
+#   docker compose up -d --> Rodar em background
+#   docker compose down --> Parar containers
+#   docker compose logs --> Ver logs
+#   docker compose restart --> Reiniciar
+#   docker compose ps --> Ver containers
+
+# ==================== Exemplo real: aplicação web + banco ====================
+version: '3'
+
+services:
+
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: senha123
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+
+
+# ==================== Exemplo real: aplicação web + banco ====================
+version: '3.4'
+services:
+    app:
+        image: yuri/web
+        container_name: app
+        ports:
+          - 8080:80
+        depends_on:
+          - db
+    db:
+        image: mysql
+        container_name: db
+        environment:
+          - MYSQL_USER=root
+          - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+          - MYSQL_DATABASE=loja
+
+# ===========================================================================
